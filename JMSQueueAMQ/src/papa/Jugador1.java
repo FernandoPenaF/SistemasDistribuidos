@@ -6,7 +6,7 @@ package papa;
 
 /**
  *
- * @author JGUTIERRGARC
+ * @author LPENAF
  */
 import javax.jms.Connection;
 import javax.jms.Destination;
@@ -25,8 +25,9 @@ public class Jugador1 {
     // default broker URL is : tcp://localhost:61616"
 
     // Name of the queue we will receive messages from
-    private static String subject = "PAPAJ1_QUEUE";
-
+    private static String myQueue = "PAPAJ1_QUEUE";
+    private static String otherQueue = "PAPAJ2_QUEUE";
+    
     public void getMessages() {
         boolean goodByeReceived = false;
         Papa papa = new Papa(1);
@@ -37,13 +38,23 @@ public class Jugador1 {
             Connection connection = connectionFactory.createConnection();
             connection.start();
             
+            Destination destinationProducer, destinationConsumer;
             MessageProducer messageProducer;
-            Session session = connection.createSession(false /*Transacter*/, Session.AUTO_ACKNOWLEDGE);
-            Destination destination = session.createQueue(subject);
-            MessageConsumer messageConsumer = session.createConsumer(destination);
+            MessageConsumer messageConsumer;
             ObjectMessage objectMessage;
+            Session session;
             
-            messageProducer = session.createProducer(destination);
+            session = connection.createSession(false /*Transacter*/, Session.AUTO_ACKNOWLEDGE);
+            
+            //Setup sender of otherQueue
+            destinationProducer = session.createQueue(otherQueue);
+            messageProducer = session.createProducer(destinationProducer);
+            
+            //Setup listener of myQueue
+            destinationConsumer = session.createQueue(myQueue);
+            messageConsumer = session.createConsumer(destinationConsumer);
+            
+            //Send papa
             objectMessage = session.createObjectMessage();
             objectMessage.setObject(papa);
             System.out.println("Sending the following message: " + objectMessage.getObject());
@@ -63,7 +74,6 @@ public class Jugador1 {
                         goodByeReceived = true;
                     } else {
                         papa.decrementTtl();
-                        messageProducer = session.createProducer(destination);
                         objectMessage = session.createObjectMessage();
                         objectMessage.setObject(papa);
                         System.out.println("Sending the following message: " + objectMessage.getObject());
@@ -73,6 +83,7 @@ public class Jugador1 {
             }
             
             messageConsumer.close();
+            messageProducer.close();
             session.close();
             connection.close();
 
@@ -84,5 +95,4 @@ public class Jugador1 {
     public static void main(String[] args) {
         new Jugador1().getMessages();
     }
-
 }
