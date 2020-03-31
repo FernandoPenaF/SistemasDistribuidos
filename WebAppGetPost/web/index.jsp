@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Diferencia entre GET y POST</h1>
-        
+                
         <form name="FormaUno" action="final.jsp" method="POST">
             <input type="text" name="parametro_con_post" value="" />
             <input type="submit" value="Enviar" />
