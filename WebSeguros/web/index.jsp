@@ -15,51 +15,54 @@
         <h1>Sistema de cotización de seguros de auto</h1>
         <h3>Datos personales</h3>
         
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Campo</th>
-                    <th>Valor</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Nombre</td>
-                    <td><input type="text" name="nombre" value="" /></td>
-                </tr>
-                <tr>
-                    <td>Apellidos</td>
-                    <td><input type="text" name="apellidos" value="" /></td>
-                </tr>
-                <tr>
-                    <td>Género</td>
-                    <td>
-                        <input type="radio" name="genero" value="Hombre" checked="checked" />
-                        <input type="radio" name="genero" value="Mujer" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>Edad</td>
-                    <td><input type="text" name="edad" value="" /></td>
-                </tr>
-                <tr>
-                    <td>Estado</td>
-                    <td>
-                        <select name="estado">
-                            <option>Ciudad de México</option>
-                            <option>Estado de México</option>
-                            <option>Jalisco</option>
-                            <option>Morelos</option>
-                            <option>Tabasco</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td><input type="reset" value="limpiar" name="Limpiar" /></td>
-                    <td><input type="submit" value="enviar" name="Enviar" /></td>
-                </tr>
-            </tbody>
-        </table>
-
+        <form name="FormsDatos" action="Auto.jsp" method="POST">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Campo</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Nombre</td>
+                        <td><input type="text" name="nombre" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>Apellidos</td>
+                        <td><input type="text" name="apellidos" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>Género</td>
+                        <td>
+                            <input type="radio" name="genero" value="masc" />
+                            <label for="masc">Masculino</label><br>
+                            <input type="radio" name="genero" value="fem" />
+                            <label for="fem">Femenino</label><br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Edad</td>
+                        <td><input type="text" name="edad" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>Estado</td>
+                        <td>
+                            <select name="estado">
+                                <option>Ciudad de México</option>
+                                <option>Estado de México</option>
+                                <option>Jalisco</option>
+                                <option>Morelos</option>
+                                <option>Tabasco</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="reset" value="limpiar" name="Limpiar" /></td>
+                        <td><input type="submit" value="enviar" name="Enviar" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
     </body>
 </html>
