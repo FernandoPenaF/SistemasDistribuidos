@@ -4,9 +4,17 @@
         <servlet-name>MyFirstServlet</servlet-name>
         <servlet-class>servlets.MyFirstServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ModificadorDeFlujo</servlet-name>
+        <servlet-class>servlets.ModificadorDeFlujo</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MyFirstServlet</servlet-name>
         <url-pattern>/MyFirstServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificadorDeFlujo</servlet-name>
+        <url-pattern>/ModificadorDeFlujo</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
