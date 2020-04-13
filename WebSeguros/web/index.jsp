@@ -15,7 +15,7 @@
         <h1>Sistema de cotización de seguros de auto</h1>
         <h3>Datos personales</h3>
         
-        <form name="FormsDatos" action="Auto.jsp" method="POST">
+        <form name="FormsDatos" action="auto.jsp" method="POST">
             <table border="1">
                 <thead>
                     <tr>
@@ -35,9 +35,9 @@
                     <tr>
                         <td>Género</td>
                         <td>
-                            <input type="radio" name="genero" value="masc" />
+                            <input type="radio" name="genero" value="masculino" />
                             <label for="masc">Masculino</label><br>
-                            <input type="radio" name="genero" value="fem" />
+                            <input type="radio" name="genero" value="femenino" />
                             <label for="fem">Femenino</label><br>
                         </td>
                     </tr>
