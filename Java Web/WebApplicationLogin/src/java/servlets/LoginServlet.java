@@ -33,25 +33,33 @@ public class LoginServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-//            out.println("<!DOCTYPE html>");
-//            out.println("<html>");
-//            out.println("<head>");
-//            out.println("<title>Servlet LoginServlet</title>");            
-//            out.println("</head>");
-//            out.println("<body>");
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet LoginServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
 //            out.println("<h1>Servlet LoginServlet at " + request.getContextPath() + "</h1>");
-//            out.println("</body>");
-//            out.println("</html>");
+
             if(request.getParameter("contrasena").equals("123")){
                 String nextJSP = "/welcome.jsp";
                 RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
                 dispatcher.forward(request, response);
                 
             } else {
-                String recursoAIncluir = "/ErrorServlet";
+                String recursoAIncluir = "/BadServlet";
                 RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(recursoAIncluir);
+                out.println("1<br>");
                 dispatcher.include(request, response);
+                out.println("2<br>");
+                dispatcher.include(request, response);
+                out.println("3<br>");
+                dispatcher.include(request, response);
+                out.println("4<br>");
             }
+            
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
