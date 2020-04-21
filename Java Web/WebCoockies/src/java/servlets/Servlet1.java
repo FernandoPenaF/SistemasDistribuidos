@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class Servlet1 extends HttpServlet {
 
+    private int cont = 0;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -34,8 +35,9 @@ public class Servlet1 extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             if(request.getParameter("contrasena").equals("123456")){
-                Cookie ck = new Cookie("nombre", request.getParameter("nombre"));
-                ck.setMaxAge(10);
+                cont++;
+                Cookie ck = new Cookie("nombre" + String.valueOf(cont), request.getParameter("nombre"));
+                //ck.setMaxAge(10);
                 response.addCookie(ck);
                 out.println("<!DOCTYPE html>");
                 out.println("<html>");
