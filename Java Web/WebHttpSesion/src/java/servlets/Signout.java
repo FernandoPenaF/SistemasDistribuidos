@@ -8,16 +8,16 @@ package servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Fernando
  */
-public class Servlet2 extends HttpServlet {
+public class Signout extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,15 +36,12 @@ public class Servlet2 extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Servlet2</title>");            
+            out.println("<title>Servlet Signout</title>");            
             out.println("</head>");
             out.println("<body>");
-            
-            Cookie cks[] = request.getCookies();
-            for (int i = 0; i < cks.length; i++) {
-                out.println("<p>Cookie[" + i + "] = " + cks[i].getName() + " : " + cks[i].getValue() +"</p>");
-            }
-            
+            HttpSession mySession = request.getSession();
+            out.println("<h1>" + mySession.getAttribute("usuario") + ", gracias por utilizar la aplicación</h1>");
+            mySession.invalidate();
             out.println("</body>");
             out.println("</html>");
         }
