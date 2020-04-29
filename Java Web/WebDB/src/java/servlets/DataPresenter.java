@@ -50,7 +50,7 @@ public class DataPresenter extends HttpServlet {
                 Class.forName("org.apache.derby.jdbc.ClientDriver");
                 Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/myDatabase", "root", "root");
                 Statement query = con.createStatement();
-                ResultSet rs = query.executeQuery("SELECT * FROM CUSTOMERS");
+                ResultSet rs = query.executeQuery("SELECT * FROM CUSTOMER");
                 
                 while(rs.next()){
                     out.println("ID: " + rs.getInt("ID"));
